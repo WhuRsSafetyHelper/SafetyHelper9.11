@@ -4,6 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Person">
+    tools:context=".Person"
+    tools:layout_editor_absoluteY="25dp">
+
+
+    <ImageView
+        android:id="@+id/h_back"
+        android:layout_width="384dp"
+        android:layout_height="169dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/use_ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/h_head"
+        android:layout_width="91dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="384dp"
+        android:layout_height="0dp"
+        android:layout_alignBottom="@id/h_head"
+        android:layout_marginBottom="395dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/h_head">
+
+        <ImageView
+            android:id="@+id/user_line"
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/user_line"
+            android:text="wangwu"
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/user_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/user_line"
+            android:text="111****1111"
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/user_sex"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="103dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:text="个人录音记录"
+        app:layout_constraintBottom_toTopOf="@+id/setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice_file" />
+
+    <TextView
+        android:id="@+id/use_ID"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:text="性别： nan"
+        app:layout_constraintBottom_toTopOf="@+id/protection_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/h_back" />
+
+    <TextView
+        android:id="@+id/protection_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:text="身份证：111111********1111"
+        app:layout_constraintBottom_toTopOf="@+id/voice_file"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/use_ID" />
+
+    <TextView
+        android:id="@+id/voice_file"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:text="个人请求保护记录"
+        app:layout_constraintBottom_toTopOf="@+id/user_sex"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/protection_list" />
+
+    <TextView
+        android:id="@+id/modify"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="106dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="104dp"
+        android:text="修改个人资料"
+        app:layout_constraintBottom_toBottomOf="@+id/exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/user_sex" />
+
+    <TextView
+        android:id="@+id/setting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginStart="17dp"
+        android:text="设置"
+        app:layout_constraintBottom_toTopOf="@+id/exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_sex" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="注销登录"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting" />
 
 </android.support.constraint.ConstraintLayout>
