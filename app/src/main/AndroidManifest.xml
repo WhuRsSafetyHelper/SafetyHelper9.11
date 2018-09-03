@@ -42,41 +42,42 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@mipmap/test"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="0gQCcxuEmtAIeVxOdVLPGtCxfcHRDw0M"/>
-            <!--android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" />-->
-        <activity android:name=".StartActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:value="0gQCcxuEmtAIeVxOdVLPGtCxfcHRDw0M" />
+        <!-- android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" /> -->
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Menu" /><!-- android:exported="true"-->
+        <activity android:name=".Menu" /> <!-- android:exported="true" -->
         <activity android:name=".Route" />
         <activity android:name=".Protection" />
         <activity android:name=".Person" />
         <activity android:name=".Police" />
-        <activity android:name=".Navigation"/>
-        <activity android:name=".Record" android:exported="true"/>
+        <activity android:name=".Navigation" />
+        <activity
+            android:name=".Record"
+            android:exported="true" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
 
-
+        <activity android:name=".Guide">
+               <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+        </activity>
     </application>
+
 </manifest>
