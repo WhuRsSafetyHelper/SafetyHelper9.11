@@ -5,9 +5,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+/*
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.module.GlideModule;
+import jp.wasabeef.glide.transformations.BlurTransformation;
+import jp.wasabeef.glide.transformations.BitmapTransformation;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
+
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+*/
+
 
 public class Person extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,6 +61,7 @@ public class Person extends AppCompatActivity implements View.OnClickListener {
         mModify.setOnClickListener(this);
         mSet.setOnClickListener(this);
         mExit.setOnClickListener(this);
+
 
       /*  MultiTransformation multi = new MultiTransformation(
                 new BlurTransformation(25),

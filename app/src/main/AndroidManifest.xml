@@ -72,12 +72,17 @@
             android:enabled="true"
             android:process=":remote" />
 
-        <activity android:name=".Guide">
-               <intent-filter>
-               <action android:name="android.intent.action.MAIN" />
-               <category android:name="android.intent.category.LAUNCHER" />
-           </intent-filter>
+        <activity android:name=".Welcome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".Guide"
+            android:exported="true"
+            android:largeHeap="true"/>
     </application>
 
 </manifest>

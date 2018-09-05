@@ -1,42 +1,81 @@
 package com.example.lenovo.safetyhelper;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.view.Window;
-import android.view.WindowManager;
-
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import java.util.ArrayList;
 import android.support.v4.view.ViewPager;
+import java.util.ArrayList;
+import android.widget.Button;
+import java.util.List;
+import android.content.Intent;
+import android.view.LayoutInflater;
+
 
 
 
 public class Guide extends AppCompatActivity {
-    private final int SPLASH_DISPLAY_LENGHT = 3000;  //延迟3秒
 
-
+    private ViewPager viewPager;//需要ViewPager
+    private PagerAdapter mAdapter;//需要PagerAdapter适配器
+    private List<View> mViews=new ArrayList<>();//准备数据源
+    private Button bt_Login;//在ViewPager的最后一个页面设置一个按钮，用于点击跳转到Menu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(Guide.this, LoginActivity.class);
-                Guide.this.startActivity(intent);
-                Guide.this.finish();
-            }
-        }, SPLASH_DISPLAY_LENGHT);
-
+        initView();//初始化view
     }
+
+    private void initView() {
+        viewPager= (ViewPager) findViewById(R.id.view_pager);
+        LayoutInflater inflater=LayoutInflater.from(this);//将每个xml文件转化为View
+        View guideOne=inflater.inflate(R.layout.guidance01, null);//每个xml中就放置一个imageView
+        View guideTwo=inflater.inflate(R.layout.guidance02,null);
+        View guideThree=inflater.inflate(R.layout.guidance03,null);
+
+        mViews.add(guideOne);//将view加入到list中
+        mViews.add(guideTwo);
+        mViews.add(guideThree);
+
+        mAdapter=new PagerAdapter() {
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                View view=mViews.get(position);//初始化适配器，将view加到container中
+                container.addView(view);
+                return view;
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                View view=mViews.get(position);
+                container.removeView(view);//将view从container中移除
+            }
+
+            @Override
+            public int getCount() {
+                return mViews.size();
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                return view==object;//判断当前的view是我们需要的对象
+            }
+        };
+
+        viewPager.setAdapter(mAdapter);
+
+        bt_Login= (Button) guideThree.findViewById(R.id.to_Login);
+        bt_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Guide.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+
 }

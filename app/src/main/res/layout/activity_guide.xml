@@ -6,28 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".Guide">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:background="@drawable/test">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="welcome!"
-            android:textStyle="italic"
-            android:textColorHighlight="@color/colorPrimary"
-            android:layout_gravity="center"
-            android:textSize="40dp"
-            android:layout_marginBottom="80px"/>
-        <ProgressBar
-            android:id="@+id/progressBarLarge"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:progressDrawable="@android:color/holo_green_light"
-            android:progressTint="@color/colorPrimary"/>
-    </LinearLayout>
+    <!--<android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="342dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="49dp"
+        app:layout_constraintBottom_toTopOf="@+id/to_Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/to_Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager" />
+-->
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativeLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.example.cnlive.viewpager.MainActivity"
+        tools:showIn="@layout/activity_menu">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
