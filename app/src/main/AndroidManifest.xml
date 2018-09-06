@@ -51,7 +51,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="0gQCcxuEmtAIeVxOdVLPGtCxfcHRDw0M" />
+            android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" />
         <!-- android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" /> -->
         <activity
             android:name=".LoginActivity"
@@ -63,6 +63,9 @@
         <activity android:name=".Person" />
         <activity android:name=".Police" />
         <activity android:name=".Navigation" />
+        <activity android:name=".Walk"/>
+        <activity android:name=".BNaviGuideActivity"/>
+        <activity android:name=".BNaviMainActivity"/>
         <activity
             android:name=".Record"
             android:exported="true" />

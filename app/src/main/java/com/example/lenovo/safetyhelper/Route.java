@@ -49,6 +49,7 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
 
 
     static final String ROUTE_PLAN_NODE = "routePlanNode";
+
     private boolean hasInitSuccess = false;
     private BNRoutePlanNode mStartNode = null;
     private LocationClient mLocationClient = null;
@@ -74,7 +75,7 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
 
 
         BaiduNaviManagerFactory.getBaiduNaviManager().init(Route.this,
-                mSDCardPath, "NMSL", new IBaiduNaviManager.INaviInitListener() {
+                mSDCardPath, "1111", new IBaiduNaviManager.INaviInitListener() {
 
                     @Override
                     public void onAuthResult(int status, String msg) {
@@ -188,13 +189,13 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
         @Override
         public void onGetPoiResult(PoiResult poiResult) {
 
-                String poiname = poiResult.getAllPoi().get(0).name;
-                String poiadd = poiResult.getAllPoi().get(0).address;
-                String idString = poiResult.getAllPoi().get(0).uid;
-                Intent it = new Intent(Route.this, Menu.class);
-                latitude = poiResult.getAllPoi().get(0).location.latitude;
-                longtitude = poiResult.getAllPoi().get(0).location.longitude;
-                routeplanToNavi(BNRoutePlanNode.CoordinateType.BD09LL);
+            String poiname = poiResult.getAllPoi().get(0).name;
+            String poiadd = poiResult.getAllPoi().get(0).address;
+            String idString = poiResult.getAllPoi().get(0).uid;
+            Intent it = new Intent(Route.this, Menu.class);
+            latitude = poiResult.getAllPoi().get(0).location.latitude;
+            longtitude = poiResult.getAllPoi().get(0).location.longitude;
+            routeplanToNavi(BNRoutePlanNode.CoordinateType.BD09LL);
         }
 
         @Override
@@ -225,7 +226,7 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
 
 
 
-        List<BNRoutePlanNode> list = new ArrayList<BNRoutePlanNode>();
+        final List<BNRoutePlanNode> list = new ArrayList<BNRoutePlanNode>();
         list.add(sNode);
         list.add(eNode);
 
@@ -253,9 +254,13 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
                                 Toast.makeText(Route.this, "算路成功准备进入导航", Toast.LENGTH_SHORT)
                                         .show();
                                 Intent intent = new Intent(Route.this,
-                                      Navigation.class);
+                                        BNaviMainActivity.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable(ROUTE_PLAN_NODE, mStartNode);
+                                intent.putExtra("slatitude",list.get(0).getLatitude());
+                                intent.putExtra("elatitude",list.get(1).getLatitude());
+                                intent.putExtra("slongitude",list.get(0).getLongitude());
+                                intent.putExtra("elongitude",list.get(1).getLongitude());
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                                 break;
