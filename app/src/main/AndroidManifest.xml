@@ -82,6 +82,9 @@
         <activity
             android:name=".Guide"
             android:exported="true"
+            android:largeHeap="true" />
+        <activity android:name=".Test"
+            android:exported="true"
             android:largeHeap="true"/>
     </application>
 

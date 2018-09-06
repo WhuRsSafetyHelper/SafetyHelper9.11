@@ -20,7 +20,7 @@ public class Guide extends AppCompatActivity {
     private ViewPager viewPager;//需要ViewPager
     private PagerAdapter mAdapter;//需要PagerAdapter适配器
     private List<View> mViews=new ArrayList<>();//准备数据源
-    private Button bt_Login;//在ViewPager的最后一个页面设置一个按钮，用于点击跳转到Menu
+    private Button bt_Menu;//在ViewPager的最后一个页面设置一个按钮，用于点击跳转到Menu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +31,9 @@ public class Guide extends AppCompatActivity {
     private void initView() {
         viewPager= (ViewPager) findViewById(R.id.view_pager);
         LayoutInflater inflater=LayoutInflater.from(this);//将每个xml文件转化为View
-        View guideOne=inflater.inflate(R.layout.guidance01, null);//每个xml中就放置一个imageView
-        View guideTwo=inflater.inflate(R.layout.guidance02,null);
-        View guideThree=inflater.inflate(R.layout.guidance03,null);
+        View guideOne=inflater.inflate(R.layout.item01, null);//每个xml中就放置一个imageView
+        View guideTwo=inflater.inflate(R.layout.item02,null);
+        View guideThree=inflater.inflate(R.layout.item04,null);
 
         mViews.add(guideOne);//将view加入到list中
         mViews.add(guideTwo);
@@ -66,11 +66,11 @@ public class Guide extends AppCompatActivity {
 
         viewPager.setAdapter(mAdapter);
 
-        bt_Login= (Button) guideThree.findViewById(R.id.to_Login);
-        bt_Login.setOnClickListener(new View.OnClickListener() {
+        bt_Menu= (Button) guideThree.findViewById(R.id.to_Menu);
+        bt_Menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Guide.this,LoginActivity.class);
+                Intent intent=new Intent(Guide.this,Menu.class);
                 startActivity(intent);
                 finish();
             }
