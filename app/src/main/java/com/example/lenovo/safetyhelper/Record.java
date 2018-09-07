@@ -373,7 +373,7 @@ public class Record extends AppCompatActivity implements View.OnClickListener{
 
                 // post请求上传
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost post = new HttpPost("http://10.135.107.70/testt.php");
+                HttpPost post = new HttpPost("http://2f18k91236.imwork.net:47215/Mmenu.php");
                 try {
                     //String text = "测试文字";
                     //byte[] textByte = text.getBytes("UTF-8");
@@ -418,7 +418,7 @@ public class Record extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void run() {
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost post = new HttpPost("http://2f18k91236.imwork.net:47215/testt.php");
+                HttpPost post = new HttpPost("http://2f18k91236.imwork.net:47215/Mmenu.php");
                 try {
                     MultipartEntity entity = new MultipartEntity();
                     StringBody string = new StringBody("Tuesday");

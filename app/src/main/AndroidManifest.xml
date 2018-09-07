@@ -51,21 +51,21 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" />
+            android:value="0gQCcxuEmtAIeVxOdVLPGtCxfcHRDw0M" />
         <!-- android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" /> -->
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Menu" /> <!-- android:exported="true" -->
+        <activity android:name=".Menu" android:exported="true"/> <!-- android:exported="true" -->
         <activity android:name=".Route" />
         <activity android:name=".Protection" />
         <activity android:name=".Person" />
         <activity android:name=".Police" />
         <activity android:name=".Navigation" />
-        <activity android:name=".Walk"/>
-        <activity android:name=".BNaviGuideActivity"/>
-        <activity android:name=".BNaviMainActivity"/>
+        <activity android:name=".Walk" />
+        <activity android:name=".BNaviGuideActivity" />
+        <activity android:name=".BNaviMainActivity" />
         <activity
             android:name=".Record"
             android:exported="true" />
@@ -86,9 +86,15 @@
             android:name=".Guide"
             android:exported="true"
             android:largeHeap="true" />
-        <activity android:name=".Test"
+        <activity
+            android:name=".Test"
             android:exported="true"
-            android:largeHeap="true"/>
+            android:largeHeap="true" />
+        <activity
+            android:name=".deal"
+            android:exported="true" />
+        <activity android:name=".Mmenu"
+            android:exported="true" />
     </application>
 
 </manifest>

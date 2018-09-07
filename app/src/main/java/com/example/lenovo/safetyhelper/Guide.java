@@ -33,11 +33,13 @@ public class Guide extends AppCompatActivity {
         LayoutInflater inflater=LayoutInflater.from(this);//将每个xml文件转化为View
         View guideOne=inflater.inflate(R.layout.item01, null);//每个xml中就放置一个imageView
         View guideTwo=inflater.inflate(R.layout.item02,null);
-        View guideThree=inflater.inflate(R.layout.item04,null);
+        View guideThree=inflater.inflate(R.layout.item03,null);
+        View guideFour=inflater.inflate(R.layout.item04,null);
 
         mViews.add(guideOne);//将view加入到list中
         mViews.add(guideTwo);
         mViews.add(guideThree);
+        mViews.add(guideFour);
 
         mAdapter=new PagerAdapter() {
             @Override
@@ -66,11 +68,11 @@ public class Guide extends AppCompatActivity {
 
         viewPager.setAdapter(mAdapter);
 
-        bt_Menu= (Button) guideThree.findViewById(R.id.to_Menu);
+        bt_Menu= (Button) guideFour.findViewById(R.id.to_Menu);
         bt_Menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Guide.this,Menu.class);
+                Intent intent=new Intent(Guide.this,deal.class);
                 startActivity(intent);
                 finish();
             }
