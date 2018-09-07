@@ -114,42 +114,12 @@ public class Police extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                httpclient.getConnectionManager().shutdown();
-            }
-        }).start();
-
-        /*HttpClient httpclient = new DefaultHttpClient();
-        HttpPost post = new HttpPost("http://10.135.107.70/testtt.php");
-        try {
-            MultipartEntity entity = new MultipartEntity();
-            StringBody string = new StringBody("Tuesday");
-            entity.addPart("string", string);
-            post.setEntity(entity);
-            HttpResponse response = httpclient.execute(post);
-            if (HttpStatus.SC_OK == response.getStatusLine().getStatusCode()) {
-                HttpEntity entitys = response.getEntity();
-                if (entity != null) {
-                    System.out.println(entity.getContentLength());
-                    System.out.println(EntityUtils.toString(entitys));
-                }
-            }
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        // TODO Auto-generated catch block
+        e.printStackTrace();
         }
         httpclient.getConnectionManager().shutdown();
-*/
-    }
+        }
+        }).start();
+
+        }
 }
