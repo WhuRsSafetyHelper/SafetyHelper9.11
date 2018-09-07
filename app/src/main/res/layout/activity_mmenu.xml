@@ -11,8 +11,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/frameLayout2"
-        android:layout_width="384dp"
-        android:layout_height="567dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">
 
         <!--<com.linroid.filtermenu.library.FilterMenuLayout
@@ -47,7 +51,7 @@
             android:layout_height="match_parent"
             android:elevation="8dp"
             app:fm_centerBottom="30dp"
-            app:fm_centerRight="190dp"
+            app:fm_centerRight="185dp"
             app:fm_collapsedRadius="30dp"
             app:fm_expandedRadius="180dp"
             app:fm_primaryColor="#87ceeb"
@@ -83,6 +87,8 @@
         android:layout_marginTop="16dp"
         android:background="#87ceeb"
         android:text="一键报警"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/activity_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,8 +100,12 @@
         android:layout_marginTop="16dp"
         android:background="#87ceeb"
         android:text="一键录音"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/activity_horizontal_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
