@@ -15,4 +15,6 @@
         completions."
     </string>
     <string name="title_activity_test">test</string>
+    <string name="article">test!!</string>
+    <string name="action_github">Github</string>
 </resources>

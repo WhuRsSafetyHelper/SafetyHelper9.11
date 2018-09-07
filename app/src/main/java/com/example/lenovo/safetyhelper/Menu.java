@@ -20,6 +20,8 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+
+
 public class Menu extends AppCompatActivity {
     private Button buttonRoute;
     private Button buttonProtection;
