@@ -16,6 +16,7 @@
         android:id="@+id/autoCompleteTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:hint="输入目的地"
         android:textSize="30sp"/>
     <TextView
         android:id="@+id/tv_dest"

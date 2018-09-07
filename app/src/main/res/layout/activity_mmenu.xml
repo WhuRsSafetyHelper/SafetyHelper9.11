@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mmenu"
+    tools:layout_editor_absoluteY="25dp">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout2"
+        android:layout_width="384dp"
+        android:layout_height="567dp"
+        tools:context=".MainActivity">
+
+        <!--<com.linroid.filtermenu.library.FilterMenuLayout
+            android:id="@+id/filter_menu1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            app:fm_centerHorizontal="true"
+            app:fm_centerLeft="30dp"
+            app:fm_centerVertical="true"
+            app:fm_collapsedRadius="24dp"
+            app:fm_expandedRadius="96dp"
+            app:fm_primaryColor="#ff5791aa"
+            app:fm_primaryDarkColor="#ff334862"></com.linroid.filtermenu.library.FilterMenuLayout>-->
+
+        <!-- &lt;!&ndash;<com.linroid.filtermenu.library.FilterMenuLayout
+            android:id="@+id/filter_menu2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            app:fm_expandedRadius="96dp"
+            app:fm_collapsedRadius="24dp"
+            app:fm_centerTop="100dp"
+            app:fm_centerLeft="48dp"
+            app:fm_primaryColor="#ff3163"
+            app:fm_primaryDarkColor="#ce3d68">
+        </com.linroid.filtermenu.library.FilterMenuLayout>-->
+
+        <com.linroid.filtermenu.library.FilterMenuLayout
+            android:id="@+id/filter_menu3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            app:fm_centerBottom="30dp"
+            app:fm_centerRight="190dp"
+            app:fm_collapsedRadius="30dp"
+            app:fm_expandedRadius="180dp"
+            app:fm_primaryColor="#87ceeb"
+            app:fm_primaryDarkColor="#4169e1"></com.linroid.filtermenu.library.FilterMenuLayout> <!-- app:fm_primaryColor="#ff5791aa"-->
+
+        <!-- <com.linroid.filtermenu.library.FilterMenuLayout
+            android:id="@+id/filter_menu4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            app:fm_centerBottom="50dp"
+            app:fm_centerLeft="50dp"
+            app:fm_collapsedRadius="24dp"
+            app:fm_expandedRadius="96dp"
+            app:fm_primaryColor="#ff636363"
+            app:fm_primaryDarkColor="#ff292929"></com.linroid.filtermenu.library.FilterMenuLayout>
+        &ndash;&gt;-->
+
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/baiDuMv"
+            android:layout_width="382dp"
+            android:layout_height="564dp"
+            android:clickable="true"
+            tools:layout_editor_absoluteY="32dp" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/buttonPolice"
+        android:layout_width="136dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#87ceeb"
+        android:text="一键报警"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRecord"
+        android:layout_width="132dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#87ceeb"
+        android:text="一键录音"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
