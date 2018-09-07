@@ -279,13 +279,13 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
     }//sd卡
     public class MyLocationListener implements BDLocationListener {
 
-        @Override
-        public void onReceiveLocation(BDLocation bdLocation) {
-            /*显示当前位置地图*/
-            latitude2=bdLocation.getLatitude();
-            longtitude2=bdLocation.getLongitude();
+            @Override
+            public void onReceiveLocation(BDLocation bdLocation) {
+                /*显示当前位置地图*/
+                latitude2=bdLocation.getLatitude();
+                longtitude2=bdLocation.getLongitude();
 
-        }
+            }
     }//定位监听
 
 
