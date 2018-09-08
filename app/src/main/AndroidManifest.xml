@@ -51,13 +51,15 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="0gQCcxuEmtAIeVxOdVLPGtCxfcHRDw0M" />
-        <!-- android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" /> -->
+            android:value="0gQCcxuEmtAIeVxOdVLPGtCxfcHRDw0M" />//lei
+        <!-- android:value="OADReEXV9bRIGP3486M52gMy2aijbmDf" /> -->//liu
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Menu" android:exported="true"/> <!-- android:exported="true" -->
+        <activity
+            android:name=".Menu"
+            android:exported="true" /> <!-- android:exported="true" -->
         <activity android:name=".Route" />
         <activity android:name=".Protection" />
         <activity android:name=".Person" />
@@ -93,8 +95,10 @@
         <activity
             android:name=".deal"
             android:exported="true" />
-        <activity android:name=".Mmenu"
+        <activity
+            android:name=".Mmenu"
             android:exported="true" />
+        <activity android:name=".ttt" android:exported="true"/>
     </application>
 
 </manifest>

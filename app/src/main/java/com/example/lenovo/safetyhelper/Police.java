@@ -22,16 +22,38 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import android.content.Intent;
+import android.app.Activity;
+import android.os.Build;
+import android.view.View;
+/*import com.espian.showcaseview.sample.R;*/
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.Target;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
-public class Police extends AppCompatActivity {
+
+public class Police extends AppCompatActivity implements View.OnClickListener{
      TextView tv;
     int mBackKeyAction, mVolumnDownKeyAction;
     long mActionTime;
+
+    //布局
+    private ShowcaseView showcaseView;
+    private int counter = 0;
+    private TextView textView1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police);
         tv=findViewById(R.id.police);
+
+        textView1 = (TextView) findViewById(R.id.textView);
+        showcaseView = new ShowcaseView.Builder(this)
+                .setTarget(new ViewTarget(findViewById(R.id.textView)))
+                .setOnClickListener(this)
+                .build();
+        showcaseView.setButtonText(getString(R.string.cancel));
     }
 
 
@@ -59,7 +81,7 @@ public class Police extends AppCompatActivity {
             mActionTime = 0;
         }
 
-        //长按，且Back键和音量变大键没松
+        //长按，且Back键和音量变小键没松
 
         if (isLongPress()&& mVolumnDownKeyAction == KeyEvent.ACTION_DOWN && mBackKeyAction == KeyEvent.ACTION_DOWN ) {
             //do something
@@ -69,9 +91,9 @@ public class Police extends AppCompatActivity {
             //事件不下发啦
             return true;
         }
-        else{
+        /*else{
             tv.setText("222");
-        }
+        }*/
 
         return super.dispatchKeyEvent(event);
     }
@@ -122,4 +144,45 @@ public class Police extends AppCompatActivity {
         }).start();
 
         }
+
+        //布局
+        private void setAlpha(float alpha, View... views) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                for (View view : views) {
+                    view.setAlpha(alpha);
+                }
+            }
+        }
+
+    @Override
+    public void onClick(View v) {
+
+        Intent intent = new Intent(Police.this, Mmenu.class);
+        startActivity(intent);
+
+/*        switch (counter) {
+            case 0:
+                showcaseView.setShowcase(new ViewTarget(textView2), true);
+                Intent intent = new Intent(ttt.this, Mmenu.class);
+                startActivity(intent);
+                break;
+
+            case 1:
+                showcaseView.setTarget(Target.NONE);
+                showcaseView.setContentTitle("Check it out");
+                showcaseView.setContentText("You don't always need a target to showcase");
+                showcaseView.setButtonText(getString(R.string.close));
+                setAlpha(0.4f, textView1, textView2, textView3);
+                break;
+
+            case 2:
+                showcaseView.hide();
+                setAlpha(1.0f, textView1, textView2, textView3);
+                break;
+        }
+        counter++;*/
+
+
+
+    }
 }
