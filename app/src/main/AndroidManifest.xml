@@ -60,7 +60,7 @@
         <activity
             android:name=".Menu"
             android:exported="true" /> <!-- android:exported="true" -->
-        <activity android:name=".Route" />
+        <activity android:name=".Route" android:exported="true"/>
         <activity android:name=".Protection" />
         <activity android:name=".Person" />
         <activity android:name=".Police" />
@@ -98,7 +98,6 @@
         <activity
             android:name=".Mmenu"
             android:exported="true" />
-        <activity android:name=".ttt" android:exported="true"/>
     </application>
 
 </manifest>

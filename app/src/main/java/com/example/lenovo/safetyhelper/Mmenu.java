@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.map.BaiduMap;
@@ -26,8 +27,8 @@ import com.baidu.mapapi.model.LatLng;
 
 public class Mmenu extends AppCompatActivity {
 
-    private Button buttonRecord;
-    private Button buttonPolice;
+    private ImageButton buttonRecord;
+    private  ImageButton buttonPolice;
     private MapView MapView;
     private LocationClient locationClient;
     private BaiduMap baiduMap;
@@ -45,8 +46,8 @@ public class Mmenu extends AppCompatActivity {
         FilterMenuLayout layout3 = (FilterMenuLayout) findViewById(R.id.filter_menu3);
         attachMenu3(layout3);
 
-        buttonRecord = (Button) findViewById(R.id.buttonRecord);
-        buttonPolice = (Button) findViewById(R.id.buttonPolice);
+        buttonRecord = ( ImageButton) findViewById(R.id.bt_record);
+        buttonPolice = ( ImageButton) findViewById(R.id.bt_call);
         buttonPolice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,9 +165,9 @@ public class Mmenu extends AppCompatActivity {
 
     private FilterMenu attachMenu3(FilterMenuLayout layout){
         return new FilterMenu.Builder(this)
-                .addItem(R.drawable.ic_action_add)
-                .addItem(R.drawable.ic_action_clock)
-                .addItem(R.drawable.ic_action_location_2)
+                .addItem(R.drawable.ic_protection_round)
+                .addItem(R.drawable.ic_route_round)
+                .addItem(R.drawable.ic_person_round)
                 .attach(layout)
                 .withListener(listener)
                 .build();

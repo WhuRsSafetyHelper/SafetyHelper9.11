@@ -37,6 +37,7 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    buildToolsVersion '28.0.1'
 }
 repositories {
     mavenCentral()
@@ -67,23 +68,22 @@ dependencies {
     implementation files('libs/BASE64.jar')
     implementation files('libs/glide-3.6.0.jar')
     /*implementation 'jp.wasabeef:glide-transformations:3.3.0'
-        // If you want to use the GPU Filters
-        implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'*/
-    /*   implementation 'com.github.bumptech.glide:glide:4.8.0'
-            annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-            implementation 'jp.wasabeef:glide-transformations:2.0.1'
-
-        implementation 'jp.wasabeef:glide-transformations:3.3.0'
             // If you want to use the GPU Filters
-        implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+            implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'*/
+    /*   implementation 'com.github.bumptech.glide:glide:4.8.0'
+                annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+                implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
-        implementation 'com.github.bumptech.glide:glide:4.8.0'
-        annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-        implementation ("com.github.bumptech.glide:glide:4.8.0@aar") {
-            transitive = true
-        }*/
+            implementation 'jp.wasabeef:glide-transformations:3.3.0'
+                // If you want to use the GPU Filters
+            implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
+            implementation 'com.github.bumptech.glide:glide:4.8.0'
+            annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+            implementation ("com.github.bumptech.glide:glide:4.8.0@aar") {
+                transitive = true
+            }*/
     implementation 'com.android.support:support-v4:28.0.0-alpha3'
-
     implementation 'com.linroid.filtermenu:library:0.2.+@aar'
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
 }
