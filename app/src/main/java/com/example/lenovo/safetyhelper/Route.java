@@ -314,15 +314,15 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
         for (int i = 0; i < 2; i++) {
             Fruit apple = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
             fruitList.add(apple);
-            Fruit orange = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
+            Fruit orange = new Fruit("我的位置——广埠屯", R.drawable.navi_guide_turn);
             fruitList.add(orange);
-            Fruit banana = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
+            Fruit banana = new Fruit("我的位置——武汉大学", R.drawable.navi_guide_turn);
             fruitList.add(banana);
-            Fruit waterlenmo = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
+            Fruit waterlenmo = new Fruit("我的位置——华中师范大学", R.drawable.navi_guide_turn);
             fruitList.add(waterlenmo);
-            Fruit pear = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
+            Fruit pear = new Fruit("我的位置——华中科技大学", R.drawable.navi_guide_turn);
             fruitList.add(pear);
-            Fruit grape = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
+            Fruit grape = new Fruit("我的位置——创意城", R.drawable.navi_guide_turn);
             fruitList.add(grape);
            /* Fruit pineapple=new Fruit("Pineapple",R.drawable.navi_guide_turn);
             fruitList.add(pineapple);

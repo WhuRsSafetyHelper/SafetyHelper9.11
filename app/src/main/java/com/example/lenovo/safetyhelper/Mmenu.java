@@ -28,7 +28,7 @@ import com.baidu.mapapi.model.LatLng;
 public class Mmenu extends AppCompatActivity {
 
     private ImageButton buttonRecord;
-    private  ImageButton buttonPolice;
+    private ImageButton buttonPolice;
     private MapView MapView;
     private LocationClient locationClient;
     private BaiduMap baiduMap;
@@ -78,14 +78,11 @@ public class Mmenu extends AppCompatActivity {
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setScanSpan(1000);
         locationClient.setLocOption(option);
-
         // 设置自定义图标
         BitmapDescriptor myMarker = BitmapDescriptorFactory
                 .fromResource(R.drawable.test);
         MyLocationConfiguration config = new MyLocationConfiguration(
                 MyLocationConfiguration.LocationMode.FOLLOWING, true, myMarker);
-
-
         locationClient.registerLocationListener(new BDLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation location) {
@@ -100,11 +97,9 @@ public class Mmenu extends AppCompatActivity {
                         .longitude(location.getLongitude()).build();
                 // 设置定位数据
                 baiduMap.setMyLocationData(locData);
-
                 // 第一次定位时，将地图位置移动到当前位置
                 if (firstLocation)
-                {
-                    firstLocation = false;
+                { firstLocation = false;
                     LatLng xy = new LatLng(location.getLatitude(),
                             location.getLongitude());
                     MapStatusUpdate status = MapStatusUpdateFactory.newLatLng(xy);
@@ -112,36 +107,27 @@ public class Mmenu extends AppCompatActivity {
                 }
             }
         });
-
     }
-
-
-
     @Override
     protected void onStart()
     {
         // 如果要显示位置图标,必须先开启图层定位
         baiduMap.setMyLocationEnabled(true);
         if (!locationClient.isStarted())
-        {
-            locationClient.start();
+        { locationClient.start();
         }
-        super.onStart();
-    }
-
+        super.onStart(); }
     @Override
     protected void onStop()
-    {
+    {//
         // 关闭图层定位
         baiduMap.setMyLocationEnabled(false);
         locationClient.stop();
         super.onStop();
     }
-
     @Override
     protected void onDestroy()
-    {
-        super.onDestroy();
+    { super.onDestroy();
         // 在activity执行onDestroy时执行mMapView.onDestroy()
         MapView.onDestroy();
         MapView = null;
