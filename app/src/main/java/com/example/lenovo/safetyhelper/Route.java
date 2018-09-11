@@ -41,6 +41,13 @@ import com.baidu.navisdk.adapter.IBaiduNaviManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Route extends AppCompatActivity implements OnGetSuggestionResultListener {
     private Button btnok=null;
     private PoiSearch poiSearch;
@@ -67,6 +74,10 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
     private AutoCompleteTextView autoTv;
 
     private SuggestionSearch mSuggestionSearch = null;
+
+    //布局
+    private List<Fruit> fruitList=new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,6 +182,13 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
 
             }
         });
+
+        //布局
+        initFruits();                 //初始化水果数据
+        FruitAdapter adapter=new FruitAdapter(Route.this,R.layout.fruit_item,fruitList);
+        ListView listview = (ListView) findViewById(R.id.list_view);
+        listview.setAdapter(adapter);
+
     }
 
     @Override
@@ -289,6 +307,33 @@ public class Route extends AppCompatActivity implements OnGetSuggestionResultLis
     }//定位监听
 
 
+
+    //布局
+
+    private void initFruits() {
+        for (int i = 0; i < 2; i++) {
+            Fruit apple = new Fruit("我的位置——光谷广场", R.drawable.navi_guide_turn);
+            fruitList.add(apple);
+            Fruit orange = new Fruit("我的位置——广埠屯", R.drawable.navi_guide_turn);
+            fruitList.add(orange);
+            Fruit banana = new Fruit("我的位置——武汉大学", R.drawable.navi_guide_turn);
+            fruitList.add(banana);
+            Fruit waterlenmo = new Fruit("我的位置——华中师范大学", R.drawable.navi_guide_turn);
+            fruitList.add(waterlenmo);
+            Fruit pear = new Fruit("我的位置——华中科技大学", R.drawable.navi_guide_turn);
+            fruitList.add(pear);
+            Fruit grape = new Fruit("我的位置——创意城", R.drawable.navi_guide_turn);
+            fruitList.add(grape);
+           /* Fruit pineapple=new Fruit("Pineapple",R.drawable.navi_guide_turn);
+            fruitList.add(pineapple);
+            Fruit strawberry=new Fruit("Strawberry",R.drawable.navi_guide_turn);
+            fruitList.add(strawberry);
+            Fruit cherry=new Fruit("Cherry",R.drawable.navi_guide_turn);
+            fruitList.add(cherry);
+            Fruit mango=new Fruit("mango",R.drawable.navi_guide_turn);
+            fruitList.add(mango);*/
+        }
+    }
 
 }
 
