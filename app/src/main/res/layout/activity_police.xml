@@ -5,11 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Police">
+    tools:layout_editor_absoluteY="25dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="180dp"
+            android:layout_height="108dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="64dp"
+            android:text="@string/anim_first"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FF0000"
+            android:textSize="@dimen/showcase_radius_inner"
+            android:textStyle="bold" />
+        <!--  <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:layout_centerInParent="true"
+            android:text="@string/anim_second"
+            android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+
+    </LinearLayout>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/police"
-        android:text="同时长按后退键与音量减小键5秒即可发送报警信息"
-        android:textSize="30dp"
+        android:layout_width="361dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="131dp"
+        android:text="@string/anim_second"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/text_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:gravity="center"/>
+
 </android.support.constraint.ConstraintLayout>
