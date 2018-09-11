@@ -3,6 +3,8 @@
     package="com.example.lenovo.safetyhelper">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -62,10 +64,10 @@
         <activity
             android:name=".Menu"
             android:exported="true" /> <!-- android:exported="true" -->
+        <activity android:name=".Route" />
         <activity
-            android:name=".Route"
+            android:name=".Protection"
             android:exported="true" />
-        <activity android:name=".Protection" />
         <activity android:name=".Person" />
         <activity android:name=".Police" />
         <activity android:name=".Navigation" />
@@ -102,7 +104,17 @@
         <activity
             android:name=".Mmenu"
             android:exported="true" />
-        <activity android:name=".draw"  android:exported="true"/>
+
+        <service
+            android:name=".CountTimeService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".BycarActivity" />
+        <activity
+            android:name=".ByfootActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

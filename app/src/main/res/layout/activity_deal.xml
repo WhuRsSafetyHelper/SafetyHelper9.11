@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".deal"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".deal">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#808080"
+        android:background="@drawable/point2"
         android:gravity="center"
         android:orientation="vertical"
         android:screenOrientation="landscape">
@@ -20,11 +19,11 @@
         <TextView
             android:id="@+id/textview1"
             style="@style/text"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="700px"
-            android:paddingTop="40px"/>
-            <!--android:text="@string/article"-->
+            android:paddingTop="40px"
+            android:text="@string/article" />
         <!-- "我同意"复选框 -->
         <CheckBox
             android:id="@+id/checkBox1"

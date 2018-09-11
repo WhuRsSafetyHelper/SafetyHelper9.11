@@ -1,11 +1,21 @@
 package com.example.lenovo.safetyhelper;
 
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Build;
+import android.os.CountDownTimer;
+import android.os.Vibrator;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.map.BaiduMap;
@@ -24,17 +34,33 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
 
 public class Mmenu extends AppCompatActivity {
 
-    private ImageButton buttonRecord;
-    private ImageButton buttonPolice;
+    private Button buttonRecord;
+    private Button buttonPolice;
     private MapView MapView;
     private LocationClient locationClient;
     private BaiduMap baiduMap;
     private boolean firstLocation;
     private BitmapDescriptor mCurrentMarker;
     private MyLocationConfiguration config;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +69,17 @@ public class Mmenu extends AppCompatActivity {
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_mmenu);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, 1);
+            }
+        }
         FilterMenuLayout layout3 = (FilterMenuLayout) findViewById(R.id.filter_menu3);
         attachMenu3(layout3);
 
-        buttonRecord = ( ImageButton) findViewById(R.id.bt_record);
-        buttonPolice = ( ImageButton) findViewById(R.id.bt_call);
+        buttonRecord = (Button) findViewById(R.id.buttonRecord);
+        buttonPolice = (Button) findViewById(R.id.buttonPolice);
         buttonPolice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,11 +110,14 @@ public class Mmenu extends AppCompatActivity {
         option.setCoorType("bd09ll"); // 设置坐标类型
         option.setScanSpan(1000);
         locationClient.setLocOption(option);
+
         // 设置自定义图标
         BitmapDescriptor myMarker = BitmapDescriptorFactory
                 .fromResource(R.drawable.test);
         MyLocationConfiguration config = new MyLocationConfiguration(
                 MyLocationConfiguration.LocationMode.FOLLOWING, true, myMarker);
+
+
         locationClient.registerLocationListener(new BDLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation location) {
@@ -97,9 +132,11 @@ public class Mmenu extends AppCompatActivity {
                         .longitude(location.getLongitude()).build();
                 // 设置定位数据
                 baiduMap.setMyLocationData(locData);
+
                 // 第一次定位时，将地图位置移动到当前位置
                 if (firstLocation)
-                { firstLocation = false;
+                {
+                    firstLocation = false;
                     LatLng xy = new LatLng(location.getLatitude(),
                             location.getLongitude());
                     MapStatusUpdate status = MapStatusUpdateFactory.newLatLng(xy);
@@ -107,27 +144,51 @@ public class Mmenu extends AppCompatActivity {
                 }
             }
         });
+
     }
+    private static IntentFilter updateIntentFilter () {
+        final IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(CountTimeService.IN_RUNNING);
+        intentFilter.addAction(CountTimeService.END_RUNNING);
+        return intentFilter;
+    }
+    private final BroadcastReceiver mUpdateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if(action == CountTimeService.IN_RUNNING){
+             //   buttonRecord.setText(intent.getStringExtra("time"));  测试用
+            }
+            if(action == CountTimeService.END_RUNNING){
+
+            }
+        }
+    };
     @Override
     protected void onStart()
     {
         // 如果要显示位置图标,必须先开启图层定位
         baiduMap.setMyLocationEnabled(true);
         if (!locationClient.isStarted())
-        { locationClient.start();
+        {
+            locationClient.start();
         }
-        super.onStart(); }
+        super.onStart();
+    }
+
     @Override
     protected void onStop()
-    {//
+    {
         // 关闭图层定位
         baiduMap.setMyLocationEnabled(false);
         locationClient.stop();
         super.onStop();
     }
+
     @Override
     protected void onDestroy()
-    { super.onDestroy();
+    {
+        super.onDestroy();
         // 在activity执行onDestroy时执行mMapView.onDestroy()
         MapView.onDestroy();
         MapView = null;
@@ -139,21 +200,34 @@ public class Mmenu extends AppCompatActivity {
         super.onResume();
         // 在activity执行onResume时执行mMapView. onResume ()
         MapView.onResume();
+        registerReceiver(mUpdateReceiver, updateIntentFilter());
     }
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode ,Intent data){
+        if (requestCode == 1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (!Settings.canDrawOverlays(this)) {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,Uri.parse("package:" + getPackageName()));
+                    startActivityForResult(intent, 1);
+                }
+            }
+        }
 
+    }
     @Override
     protected void onPause()
     {
         super.onPause();
         // 在activity执行onPause时执行mMapView. onPause ()
         MapView.onPause();
+        unregisterReceiver(mUpdateReceiver);
     }
 
     private FilterMenu attachMenu3(FilterMenuLayout layout){
         return new FilterMenu.Builder(this)
-                .addItem(R.drawable.ic_protection_round)
-                .addItem(R.drawable.ic_route_round)
-                .addItem(R.drawable.ic_person_round)
+                .addItem(R.drawable.ic_action_add)
+                .addItem(R.drawable.ic_action_clock)
+                .addItem(R.drawable.ic_action_location_2)
                 .attach(layout)
                 .withListener(listener)
                 .build();

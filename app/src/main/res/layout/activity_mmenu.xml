@@ -20,13 +20,14 @@
         tools:context=".MainActivity">
 
 
+
         <com.linroid.filtermenu.library.FilterMenuLayout
             android:id="@+id/filter_menu3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:elevation="8dp"
             app:fm_centerBottom="30dp"
-            app:fm_centerRight="182dp"
+            app:fm_centerRight="185dp"
             app:fm_collapsedRadius="30dp"
             app:fm_expandedRadius="180dp"
             app:fm_primaryColor="#87ceeb"
@@ -41,30 +42,31 @@
             tools:layout_editor_absoluteY="32dp" />
     </FrameLayout>
 
-
-    <ImageButton
-        android:id="@+id/bt_call"
-        android:layout_width="51dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
+    <Button
+        android:id="@+id/buttonPolice"
+        android:layout_width="136dp"
+        android:layout_height="49dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="66dp"
-        android:src="@drawable/ic_call1_round"
-        app:layout_constraintBottom_toTopOf="@+id/bt_record"
+        android:layout_marginTop="16dp"
+        android:background="#87ceeb"
+        android:text="一键报警"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/activity_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ImageButton
-        android:id="@+id/bt_record"
-        android:layout_width="51dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="381dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_record_round"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_call" />
+    <Button
+        android:id="@+id/buttonRecord"
+        android:layout_width="132dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#87ceeb"
+        android:text="一键录音"
+        android:textColor="#FF0000"
+        android:textSize="@dimen/activity_horizontal_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 

@@ -60,25 +60,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 /*import com.kingtone.www.record.util.EnvironmentShare;*/
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import android.media.MediaRecorder;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-
-import com.carlos.voiceline.mylibrary.VoiceLineView;
-
-import java.io.File;
-import java.io.IOException;
 
 
-
-
-public class Record extends AppCompatActivity implements Runnable /*implements View.OnClickListener*/ {
+public class Record extends AppCompatActivity implements View.OnClickListener{
 
     private ImageButton buttonStart;
     private ImageButton buttonPlay;
@@ -96,7 +80,6 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
 
     private MediaRecorder mediaRecorder=new MediaRecorder();  //用于录音
     private MediaPlayer mediaPlayer=new MediaPlayer();  //用于播放录音
-    /*private File filetem=new File( Environment.getExternalStorageDirectory().getPath() + "//RecordTest"+"/new.amr");  //创建一个临时的音频文件*/
     private File filetem=new File( Environment.getExternalStorageDirectory().getPath() + "//RecordTest"+"/new.amr");  //创建一个临时的音频文件
     private long currenttime;  //用于确定当前录音时间
     private boolean isrecording=false;  //用于判断当前是否在录音
@@ -110,10 +93,6 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
     private File file;//最终录音文件
 
     // 传给服务器端的上传和下载标志
-
-
-    //波形
-    private VoiceLineView voiceLineView;
 
     private String getTime(int timeMs) {
         int total=timeMs/1000;
@@ -142,19 +121,6 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
             } //将getMaxAmplitude()的返回值转换为分贝
             progressBar.setMax(15);//将最大音量设置为60分贝
             progressBar.setProgress(volume/4);//显示录音音量
-            //volumehandler.postDelayed(runnable_1, 100);
-
-            //波形
-           /* double ratio2 = (double) mediaRecorder.getMaxAmplitude() / 100;
-            double db = 0;// 分贝
-            //默认的最大音量是100,可以修改，但其实默认的，在测试过程中就有不错的表现
-            //你可以传自定义的数字进去，但需要在一定的范围内，比如0-200，就需要在xml文件中配置maxVolume
-            //同时，也可以配置灵敏度sensibility
-            if (ratio2 > 1)
-                db = 20 * Math.log10(ratio);
-            //只要有一个线程，不断调用这个方法，就可以使波形变化
-            //主要，这个方法必须在ui线程中调用
-            voiceLineView.setVolume((int) (db));*/
             volumehandler.postDelayed(runnable_1, 100);
         }
     };
@@ -178,45 +144,6 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
     };
 
 
-//波形
-
-    //private MediaRecorder mMediaRecorder;
-    private boolean isAlive = true;
-    /*private VoiceLineView voiceLineView;*/
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(mediaRecorder==null) return;
-            double ratio = (double) mediaRecorder.getMaxAmplitude() / 100;
-            double db = 0;// 分贝
-            //默认的最大音量是100,可以修改，但其实默认的，在测试过程中就有不错的表现
-            //你可以传自定义的数字进去，但需要在一定的范围内，比如0-200，就需要在xml文件中配置maxVolume
-            //同时，也可以配置灵敏度sensibility
-            if (ratio > 1)
-                db = 20 * Math.log10(ratio);
-            //只要有一个线程，不断调用这个方法，就可以使波形变化
-            //主要，这个方法必须在ui线程中调用
-            voiceLineView.setVolume((int) (db));
-        }
-    };
-
-    /*private Runnable runnable_4=new Runnable() {  //音量
-        @Override
-        public void run() {
-            if(mediaRecorder==null) return;
-            double ratio = (double) mediaRecorder.getMaxAmplitude() / 100;
-            double db = 0;// 分贝
-            //默认的最大音量是100,可以修改，但其实默认的，在测试过程中就有不错的表现
-            //你可以传自定义的数字进去，但需要在一定的范围内，比如0-200，就需要在xml文件中配置maxVolume
-            //同时，也可以配置灵敏度sensibility
-            if (ratio > 1)
-                db = 20 * Math.log10(ratio);
-            //只要有一个线程，不断调用这个方法，就可以使波形变化
-            //主要，这个方法必须在ui线程中调用
-            voiceLineView.setVolume((int) (db));
-        }
-    };*/
 
 
     @Override
@@ -229,10 +156,6 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
         time=(TextView)findViewById(R.id.textViewTime);
         progressBar=(ProgressBar)findViewById(R.id.progressTimeBar);
         buttonFinish = (Button)findViewById(R.id.buttonFinish);
-
-        //波形
-
-        voiceLineView = (VoiceLineView) findViewById(R.id.voicLine);
         //volume=(ImageView)findViewById(R.id.Volume);
         MediaPlayer.OnCompletionListener playerListener = new MediaPlayer.OnCompletionListener(){
             @Override
@@ -245,48 +168,10 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
             }
         };
         mediaPlayer.setOnCompletionListener(playerListener);
-       /* buttonStart.setOnClickListener(this);*/
-        buttonStart.setOnClickListener(new View.OnClickListener() {    //设置Button的监听器
-            @Override
-            public void onClick(View v) {
-                if (isrecording) {
-                    finishrecord();
-                } else {
-                    record();
-                }
-            }
-        });
-       /* buttonPlay.setOnClickListener(this);
-        buttonFinish.setOnClickListener(this);*/
+        buttonStart.setOnClickListener(this);
+        buttonPlay.setOnClickListener(this);
+        buttonFinish.setOnClickListener(this);
 
-
-        //波形
-        /*voiceLineView = (VoiceLineView) findViewById(R.id.voicLine);*/
-        if (mediaRecorder == null)
-            mediaRecorder = new MediaRecorder();
-
-       /* mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
-        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-        File file = new File(Environment.getExternalStorageDirectory().getPath(), "hello.log");
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        mediaRecorder.setOutputFile(file.getAbsolutePath())*/;
-        //mediaRecorder.setMaxDuration(1000 * 60 * 10);
-       /* try {
-            mediaRecorder.prepare();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        mediaRecorder.start();*/
-
-        Thread thread = new Thread(this);
-        thread.start();
 
     }
 
@@ -355,8 +240,7 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
         alertdialogFinish.show();
         buttonFinishOK = (Button)view.findViewById(R.id.buttonFinishOK);
         buttonFinishCancel = (Button)view.findViewById(R.id. buttonFinishCancel);
-       /* buttonFinishOK.setOnClickListener(this);*/
-
+        buttonFinishOK.setOnClickListener(this);
         buttonFinishOK.setOnClickListener(new View.OnClickListener() {    //设置Button的监听器
             @Override
             public void onClick(View v) {
@@ -382,7 +266,7 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
         buttonSaveOK = (Button)view.findViewById(R.id. buttonSaveOK);
         buttonSaveCancel = (Button)view.findViewById(R.id. buttonSaveCancel);
         editTextFileName = (EditText)view.findViewById(R.id.editTextFileName);
-       /* buttonSaveOK.setOnClickListener(this);*/
+        buttonSaveOK.setOnClickListener(this);
         buttonSaveOK.setOnClickListener(new View.OnClickListener() {    //设置Button的监听器
             @Override
             public void onClick(View v) {
@@ -423,7 +307,7 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
         alertdialogUpload.show();
         buttonUploadOk = (Button)view.findViewById(R.id.buttonUploadOk);
         buttonUploadCancel = (Button)view.findViewById(R.id.buttonUploadCancel);
-        /*buttonUploadOk.setOnClickListener(this);*/
+        buttonUploadOk.setOnClickListener(this);
         buttonUploadOk.setOnClickListener(new View.OnClickListener() {    //设置Button的监听器
             @Override
             public void onClick(View v) {
@@ -634,25 +518,4 @@ public class Record extends AppCompatActivity implements Runnable /*implements V
 
     }
 
-
-    //波形
-    @Override
-    protected void onDestroy() {
-        isAlive = false;
-        mediaRecorder.release();
-        mediaRecorder = null;
-        super.onDestroy();
-    }
-
-   // @Override
-    public void run() {
-        while (isAlive) {
-            handler.sendEmptyMessage(0);
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

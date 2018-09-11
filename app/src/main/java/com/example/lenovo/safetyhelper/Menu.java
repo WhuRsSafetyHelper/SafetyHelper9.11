@@ -1,6 +1,9 @@
 package com.example.lenovo.safetyhelper;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +26,8 @@ import com.baidu.mapapi.model.LatLng;
 
 
 public class Menu extends AppCompatActivity {
+    public static int flag_outside_mode=0;
+    public static String Datetime;
     private Button buttonRoute;
     private Button buttonProtection;
     private Button buttonPerson;
@@ -134,7 +139,6 @@ public class Menu extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onStart()

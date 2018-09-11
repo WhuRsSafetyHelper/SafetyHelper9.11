@@ -4,6 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.safetyhelper.ByfootActivity">
+    tools:context=".ByfootActivity">
+
+    <TextView
+        android:id="@+id/inputtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="308dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="点此设置预计抵达时间"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="参考用时："
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/inputtime"
+        app:layout_constraintEnd_toStartOf="@+id/outputtime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txv_goout" />
+
+    <TextView
+        android:id="@+id/outputtime"
+        android:layout_width="135dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="84dp"
+        android:layout_marginEnd="60dp"
+        android:shadowColor="@android:color/darker_gray"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/inputtime"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:onClick="protect_start"
+        android:text="确定"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputtime" />
 
 </android.support.constraint.ConstraintLayout>
